@@ -66,16 +66,6 @@
 python  manage.py runserver 
 ```
 
-Django后台：
-
-使用Django Admin可以快速对数据库的各个数据表进行增删查改。
-
-![image-20231019114158812](./README.assets/image-20231019114158812.png)
-
-其关联的数据库：
-
-![image-20231019114210057](./README.assets/image-20231019114210057.png)
-
 
 
 # 参考文章
