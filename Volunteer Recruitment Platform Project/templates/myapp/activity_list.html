@@ -1,0 +1,46 @@
+{% extends 'myapp/activity_base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jumbotron.css' %}">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/jumbotron/">
+
+{% block store_content %}
+
+<div>
+
+    <header class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            {% for i in activity_list %}
+            <div class="col-lg-4 d-flex align-items-stretch mb-4">
+                <div class="card cardmodify cardbackground" style="width: 50rem;">
+                    <div class="card-header">
+                        <h5><b>{{ i.av_title }}</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">活动类型：{{ i.t }}</p>
+                        <p class="card-text">活动发布管理员：{{ i.a }}</p>
+                        <p class="card-text">活动地点：{{ i.l }}</p>
+                        <p class="card-text">活动开始时间：{{ i.av_starttime }}</p>
+                        <p class="card-text">活动结束时间：{{ i.av_endtime }}</p>
+                        <p class="card-text">活动简介：{{ i.av_content }}</p>
+                        <p class="card-text">活动要求：{{ i.av_request }}</p>
+                        <p class="card-text">招募总人数：{{ i.av_number }}</p>
+                        <a href="/myapp/submit/{{i.av_id}}" class="btn btn-secondary d-grid gap-2 col-12 mx-auto">
+                            <font size="2px">申请</font></a>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

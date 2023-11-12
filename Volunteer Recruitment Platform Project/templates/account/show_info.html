@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %}个人信息中心{% endblock %}
+{% block css %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet"/>{% endblock %}
+<head>
+    <!-- Bootstrap CSS-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link href="{% static 'css/offcanvas.css' %}" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/offcanvas/">
+</head>
+
+{% block content %}
+    <header class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </header>
+<!--<div class="container formback">-->
+<!--    <div class="loginform jumbotron">-->
+<!--        <h3>个人信息中心</h3>-->
+<!--        <form class='form-group' action="/account/show_info/" method="POST">-->
+<!--            {% csrf_token %}-->
+<!--            <div class="card-header">-->
+<!--                <h5 align="left">姓名：{{ request.session.user_name }}</h5>-->
+<!--                {% if request.session.is_volunteer %}-->
+<!--                <h5 align="left">用户类型：志愿者</h5>-->
+<!--                <h5 align="left">志愿者编号：{{ request.session.user_id }}</h5>-->
+<!--                <h5 align="left">义工组织：{{ request.session.volunteerGroup }}</h5>-->
+<!--                {% else %}-->
+<!--                <h5 align="left">用户类型：活动管理员</h5>-->
+<!--                <h5 align="left">管理员编号：{{ request.session.user_id }}</h5>-->
+<!--                {% endif %}-->
+<!--                <h5 align="left">所属学院：{{ request.session.institute }}</h5>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<body class="bg-light">
+
+
+<main role="main" class="container" style="max-width: 500px; width: 500px;">
+  <div class="d-flex align-items-center p-4 my-4 text-white-50 bg-dark rounded shadow-sm" >
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100">个人信息中心</h6>
+    </div>
+  </div>
+
+  {% csrf_token %}
+  {% if request.session.is_volunteer %}
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">用户类型：志愿者</h6>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">姓名</strong>
+        {{ request.session.user_name }}
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">志愿者编号</strong>
+        {{ request.session.user_id }}
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">所属学院</strong>
+        {{ request.session.institute }}
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#559553"/><text x="50%" y="50%" fill="#559553" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">义工组织</strong>
+        {{ request.session.volunteerGroup }}
+      </p>
+    </div>
+  </div>
+
+  {% else %}
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">用户类型：管理员</h6>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">姓名</strong>
+        {{ request.session.user_name }}
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">管理员编号</strong>
+        {{ request.session.user_id }}
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">所属学院</strong>
+        {{ request.session.institute }}
+      </p>
+    </div>
+  </div>
+  {% endif %}
+</main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="offcanvas.js"></script>
+</body>
+
+
+{% endblock %}
+
+
+
+

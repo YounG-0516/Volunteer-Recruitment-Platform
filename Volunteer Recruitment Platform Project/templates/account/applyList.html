@@ -1,0 +1,48 @@
+{% extends 'myapp/activity_base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jumbotron.css' %}">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/jumbotron/">
+
+{% block store_content %}
+
+<div>
+
+    <header class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            {% for i in application_list %}
+            <div class="col-lg-4 d-flex align-items-stretch mb-4">
+                <div class="card cardmodify cardbackground" style="width: 70rem;">
+                    <div class="card-header">
+                        <h5><b>{{ i.av }}</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">申请编号：{{ i.ap_id }}</p>
+                        <p class="card-text">审核管理员：{{ i.a }}</p>
+                        <p class="card-text">申请志愿者：{{ i.v }}</p>
+                        <p class="card-text">申请时间：{{ i.ap_time }}</p>
+                        {% if i.ap_state == 1 %}
+                        <p class="card-text">申请状态：申请通过</b></p>
+                        {% elif i.ap_state == 2 %}
+                        <p class="card-text">申请状态：等待审批中</b></p>
+                        {% elif i.ap_state == 3 %}
+                        <p class="card-text"><b>申请状态：申请不通过</b></p>
+                        {% endif %}
+                        <p class="card-text">审核时间：{{ i.ap_approvaltime }}</p>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+body {
+  padding-top: 5rem;
+  background-image:url("../../../media/images/bg2.jpg");
+  background-repeat:repeat-y;
+  background-size:cover;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+

@@ -1,0 +1,66 @@
+{% extends 'activity/activity_base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jumbotron.css' %}">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/jumbotron/">
+
+{% block store_content %}
+
+<div>
+
+    <header class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+    </header>
+
+
+    <div class="jumbotron bg-transparent">
+        <div class="container " >
+            <h1 class="display-1" style="text-align:center; font-weight: 400;"><strong>WELCOME!</strong></h1>
+          <p style="text-align:center; ">欢迎进入校园志愿者管理平台！该平台将不定时发布志愿活动信息，请及时关注！</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            {% for i in activity_list_admin %}
+            <div class="col-lg-4 d-flex align-items-stretch mb-4">
+                <div class="card cardmodify cardbackground" style="width: 70rem;">
+                    <div class="card-header">
+                        <h5><b>{{ i.av_title }}</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">活动类型：{{ i.t }}</p>
+                        <p class="card-text">活动发布管理员：{{ i.a }}</p>
+                        <p class="card-text">活动地点：{{ i.l }}</p>
+                        <p class="card-text">活动开始时间：{{ i.av_starttime }}</p>
+                        <p class="card-text">活动结束时间：{{ i.av_endtime }}</p>
+                        <p class="card-text">活动简介：{{ i.av_content }}</p>
+                        <p class="card-text">活动要求：{{ i.av_request }}</p>
+                        <p class="card-text">招募总人数：{{ i.av_number }}</p>
+                        {% if i.av_state == 0 %}
+                        <p class="card-text">活动状态：尚未开始招募</p>
+                        {% elif i.av_state == 1 %}
+                        <p class="card-text">活动状态：正在招募</p>
+                        {% elif i.av_state == 2 %}
+                        <p class="card-text">活动状态：招募结束</p>
+                        {% endif %}
+
+                        <a href="/myapp/editActivity/"
+                           class="btn btn-success btn-sm addtocartbutton col-5" style="margin-right: 20px; margin-left: 10px;">
+                            <font size="2px">修改活动</font></a>
+                        <a href="/myapp/deleteActivity/{{ i.av_id }}"
+                           class="btn btn-danger btn-sm addtocartbutton col-5 ">
+                            <font size="2px">删除活动</font></a>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

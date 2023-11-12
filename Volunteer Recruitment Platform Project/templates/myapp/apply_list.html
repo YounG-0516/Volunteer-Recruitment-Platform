@@ -1,0 +1,57 @@
+{% extends 'myapp/activity_base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jumbotron.css' %}">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/jumbotron/">
+
+{% block store_content %}
+<div>
+
+    <header class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            {% for i in application_list %}
+            <div class="col-lg-4 d-flex align-items-stretch mb-4">
+                <div class="card cardmodify cardbackground" style="width: 60rem;">
+                    <div class="card-header">
+                        <h5><b>【{{ i.av }}】申请</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">活动名称：{{ i.av }}</p>
+                        <p class="card-text">申请编号：{{ i.ap_id }}</p>
+                        <p class="card-text">审核管理员：{{ i.a }}</p>
+                        <p class="card-text">申请志愿者：{{ i.v }}</p>
+                        <p class="card-text">申请时间：{{ i.ap_time }}</p>
+                        {% if i.ap_state == 1 %}
+                        <p class="card-text">申请状态：申请通过</b></p>
+                        {% elif i.ap_state == 2 %}
+                        <p class="card-text">申请状态：等待审批中</b></p>
+                        {% elif i.ap_state == 3 %}
+                        <p class="card-text"><b>申请状态：申请不通过</b></p>
+                        {% endif %}
+                        <p class="card-text">审核时间：{{ i.ap_approvaltime }}</p>
+
+                        {% if i.ap_state == 2 %}
+                        <a href="/myapp/approve/{{i.ap_id}}"
+                           class="btn btn-success btn-sm addtocartbutton col-5" style="margin-right: 20px; margin-left: 10px;">
+                            <font size="2px">通过申请</font></a>
+                        <a href="/myapp/reject/{{i.ap_id}}"
+                           class="btn btn-danger btn-sm addtocartbutton col-5 ">
+                            <font size="2px">拒绝申请</font></a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

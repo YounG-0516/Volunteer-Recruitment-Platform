@@ -1,0 +1,89 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>校园志愿者招募平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+      <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+      <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      body{
+        background-image: url("{% static 'images/bg2.jpg' %}");
+        background-repeat: repeat-y;
+        background-size: cover;
+      }
+    </style>
+
+  </head>
+  <body class="text-center">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+<!--      <h3 class="masthead-brand">Cover</h3>-->
+<!--      <nav class="nav nav-masthead justify-content-center">-->
+<!--        <a class="nav-link active" href="#">Home</a>-->
+<!--        <a class="nav-link" href="#">Features</a>-->
+<!--        <a class="nav-link" href="#">Contact</a>-->
+<!--      </nav>-->
+    </div>
+  </header>
+
+  <main role="main" class="inner cover" style="text-shadow:none;">
+    <h1 class="cover-heading" style="color: black;"><b>欢迎登录校园志愿者招募平台！</b></h1>
+    <span class="button-space"></span>
+    <p class="lead" style="color: black; " ><b>请选择您的身份：</b></p>
+    <br>
+    <p class="lead">
+      <a href="/myapp/login/" class="btn btn-lg btn-dark ">管理员</a>
+      <span class="button-space"></span>
+      <a href="/account/login/" class="btn btn-lg btn-dark ">志愿者</a>
+    </p>
+  </main>
+
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+<!--      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+    </div>
+  </footer>
+</div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

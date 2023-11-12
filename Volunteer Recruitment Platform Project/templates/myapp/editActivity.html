@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %}发布活动{% endblock %}
+{% block css %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet"/>{% endblock %}
+
+{% block content %}
+
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<!-- Font Awesome -->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!--&lt;!&ndash; Moment.js &ndash;&gt;-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+
+<!-- Tempus Dominus Bootstrap 4 -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css"
+      integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"
+        integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap 4 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap Datetimepicker -->
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+<div style="display: flex; justify-content: center;">
+    <div class="container formback" style="padding-left: 250px;" >
+        <header class="container">
+            <br>
+            <br>
+            <br>
+            <br>
+        </header>
+
+        <div class="loginform jumbotron bg-light" style="text-align: center;max-width: 600px; width: 600px;">
+            <h3><b>修改活动信息</b></h3>
+            <h6>（请勿修改活动名称）</h6>
+            <form class='form-group' action="/myapp/editActivity/" method="POST">
+
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="text-left"><label>活动名称</label></div>
+                    {{ activity_form.activity_name }}
+                </div>
+                <div class="form-group">
+                    <div class="text-left"><label>活动简介</label></div>
+                    {{ activity_form.activity_introduction }}
+                </div>
+                <div class="form-group">
+                    <div class="text-left"><label>活动要求</label></div>
+                    {{ activity_form.activity_requirements }}
+                </div>
+                <div class="form-group">
+                    <div class="text-left"><label>活动地点</label></div>
+                    {{ activity_form.location }}
+                </div>
+                <div class="form-group">
+                    <div class="text-left"><label>活动类型</label></div>
+                    {{ activity_form.activity_type }}
+                </div>
+                <div class="form-group">
+                    <div class="text-left"><label>活动所属组织</label></div>
+                    {{ activity_form.group }}
+                </div>
+                <div class="text-left"><label>活动开始时间</label></div>
+                <div class="input-group date form_datetime" id="datetimepicker1" data-date-format="YYYY/MM/DD HH:mm:ss"data-target-input="nearest">
+                    {{ activity_form.activity_start_time }}
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-left"><label>活动结束时间</label></div>
+                <div class="input-group date form_datetime" id="datetimepicker2" data-date-format="YYYY/MM/DD HH:mm:ss" data-target-input="nearest">
+                    {{ activity_form.activity_end_time }}
+                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+                <script>
+                  $(function () {
+                    $("#datetimepicker1").datetimepicker({
+                      format: 'YYYY/MM/DD HH:mm:ss',
+                      language:'zh-CN',
+                      autoclose: 1,
+                      useCurrent: false
+                    });
+                  });
+                </script>
+                <script>
+                  $(function () {
+                    $("#datetimepicker2").datetimepicker({
+                      format: 'YYYY/MM/DD HH:mm:ss',
+                      language:'zh-CN',
+                      autoclose: 1,
+                      useCurrent: false
+                    });
+                  });
+                </script>
+                <br>
+                <div class="form-group">
+                    <div class="text-left"><label>招募人数</label></div>
+                    {{ activity_form.num }}
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">修改</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

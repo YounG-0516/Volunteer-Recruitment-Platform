@@ -1,0 +1,187 @@
+<!--<!doctype html>-->
+<!--{% load static %}-->
+<!--<html lang="en">-->
+<!--  <head>-->
+<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    &lt;!&ndash; 上述meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ &ndash;&gt;-->
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="{% static 'css/login.css' %}" rel="stylesheet"/>-->
+<!--    <title>登录</title>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    <div class="container">-->
+<!--            <div class="col">-->
+<!--              <form class="form-login" action="/login/" method="post">-->
+<!--                  <h3 class="text-center">欢迎登录</h3>-->
+<!--                  <div class="form-group">-->
+<!--                    <label for="id_username">用户名：</label>-->
+<!--                    <input type="text" name='username' class="form-control" id="id_username" placeholder="Username" autofocus required>-->
+<!--                  </div>-->
+<!--                  <div class="form-group">-->
+<!--                    <label for="id_password">密码：</label>-->
+<!--                    <input type="password" name='password' class="form-control" id="id_password" placeholder="Password" required>-->
+<!--                  </div>-->
+<!--                  <div>-->
+<!--                  <a href="/register/" class="text-success "><ins>新用户注册</ins></a>-->
+<!--                  <button type="submit" class="btn btn-primary float-right">登录</button>-->
+<!--                  </div>-->
+<!--              </form>-->
+<!--            </div>-->
+<!--    </div> &lt;!&ndash; /container &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Optional JavaScript &ndash;&gt;-->
+<!--    &lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
+<!--    &lt;!&ndash;    {#    以下三者的引用顺序是固定的#}&ndash;&gt;-->
+<!--    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>-->
+<!--    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>-->
+<!--    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!--  </body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/register.css' %}" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="page login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>欢迎登录</h1>
+                  </div>
+                  <p>校园志愿者招募平台</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                  <form method="post" action="/account/login/" class="form-validate" id="loginFrom">
+                    {% if message %}
+                      <div class="alert alert-warning">{{ message }}</div>
+                    {% endif %}
+
+                    {% csrf_token %}
+                    <div class="form-group">
+<!--                      <input id="login-username" type="text" name="username" required data-msg="请输入姓名" placeholder="请输入姓名" value="admin" class="input-material">-->
+                      <div class="text-left"><label for="InputUsername">姓名</label></div>
+                      {{ login_form.username}}
+                    </div>
+
+                    <div class="form-group">
+<!--                      <input id="login-password" type="password" name="password" required data-msg="请输入密码" placeholder="请输入密码" class="input-material">-->
+                      <div class="text-left"><label for="InputPassword1">密码</label></div>
+                      {{ login_form.password}}
+                    </div>
+
+                    <button id="login" type="submit" class="btn btn-primary">登录</button>
+
+                    <div style="margin-top: -40px;">
+                    	<!-- <input type="checkbox"  id="check1"/>&nbsp;<span>记住密码</span>
+                    	<input type="checkbox" id="check2"/>&nbsp;<span>自动登录</span> -->
+                    	<div class="custom-control custom-checkbox " style="float: right;">
+											    <input type="checkbox" class="custom-control-input" id="check2" >
+											    <label class="custom-control-label" for="check2">自动登录</label>
+											</div>
+											<div class="custom-control custom-checkbox " style="float: right;">
+											    <input type="checkbox" class="custom-control-input" id="check1" >
+											    <label class="custom-control-label" for="check1">记住密码&nbsp;&nbsp;</label>
+											</div>
+                    </div>
+                  </form>
+                  <br />
+                  <small>没有账号?</small><a href="/account/register/" class="signup">&nbsp;注册</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script><!--表单验证-->
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    <script>
+    	$(function(){
+    		/*判断上次是否勾选记住密码和自动登录*/
+    		var check1s=localStorage.getItem("check1");
+    		var check2s=localStorage.getItem("check2");
+    		var oldName=localStorage.getItem("userName");
+    		var oldPass=localStorage.getItem("passWord");
+    		if(check1s=="true"){
+    			 $("#login-username").val(oldName);
+    			 $("#login-password").val(oldPass);
+    			 $("#check1").prop('checked',true);
+    		}else{
+    			 $("#login-username").val('');
+    			 $("#login-password").val('');
+    			 $("#check1").prop('checked',false);
+    		}
+    		if(check2s=="true"){
+    			$("#check2").prop('checked',true);
+    			$("#loginFrom").submit();
+    			//location="https://www.baidu.com?userName="+oldName+"&passWord="+oldPass;//添加退出当前账号功能
+    		}else{
+    			$("#check2").prop('checked',false);
+    		}
+    		/*拿到刚刚注册的账号*/
+    		/*if(localStorage.getItem("name")!=null){
+    			$("#login-username").val(localStorage.getItem("name"));
+    		}*/
+    		/*登录*/
+    		$("#login").click(function(){
+    			var userName=$("#login-username").val();
+    			var passWord=$("#login-password").val();
+    			/*获取当前输入的账号密码*/
+    			localStorage.setItem("userName",userName)
+    			localStorage.setItem("passWord",passWord)
+    			/*获取记住密码  自动登录的 checkbox的值*/
+    			var check1 = $("#check1").prop('checked');
+	    		var check2 = $('#check2').prop('checked');
+	    		localStorage.setItem("check1",check1);
+	    		localStorage.setItem("check2",check2);
+    		})
+
+    		/*$("#check2").click(function(){
+    			var flag=$('#check2').prop('checked');
+    			if(flag){
+    				var userName=$("#login-username").val();
+	    			var passWord=$("#login-password").val();
+	    			$.ajax({
+	    				type:"post",
+	    				url:"http://localhost:8080/powers/pow/regUsers",
+	    				data:{"userName":userName,"passWord":passWord},
+	    				async:true,
+	    				success:function(res){
+	    					alert(res);
+	    				}
+	    			});
+    			}
+    		})*/
+    	})
+    </script>
+  </body>
+</html>

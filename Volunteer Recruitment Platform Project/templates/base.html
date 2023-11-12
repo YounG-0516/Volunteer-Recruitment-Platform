@@ -1,0 +1,223 @@
+<!--<!DOCTYPE html>-->
+<!--{% load static %}-->
+<!--<html lang="en" dir="ltr">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>校园志愿者招募平台</title>-->
+
+<!--    &lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"-->
+<!--          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+
+<!--    &lt;!&ndash; Alternative to Bootstrap 3 Glyphicons &ndash;&gt;-->
+<!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+<!--    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">-->
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--            crossorigin="anonymous"></script>-->
+
+<!--    <link rel="stylesheet" href="{% static 'css/master.css' %}">-->
+
+<!--</head>-->
+
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg bg-dark mynav" role="navigation" id="navbar">-->
+<!--    <div class="container">-->
+<!--        <div class="navbar-nav align-items-center">-->
+<!--            <a class="navbar-brand mynav" href="/">校园志愿者招募平台</a>-->
+<!--        </div>-->
+<!--        <div class="navbar-nav">-->
+<!--            {% if request.session.is_login %}-->
+<!--            {% if request.session.is_volunteer %}-->
+<!--            <a class="nav-item nav-link" href="/activity/applyList" class="btn btn-simple">申请活动</a>-->
+<!--            <a class="nav-item nav-link" href="/account/applyResult" class="btn btn-simple">查询申请结果</a>-->
+<!--            {% else %}-->
+<!--            <a class="nav-item nav-link" href="/activity/post_activity" class="btn btn-simple">发布活动</a>-->
+<!--            <a class="nav-item nav-link" href="/myapp/check" class="btn btn-simple">审核申请</a>-->
+<!--            {% endif %}-->
+<!--            <a class="nav-item nav-link" href="/account/information" class="btn btn-simple">个人信息</a>-->
+<!--            {% else %}-->
+<!--            {% endif %}-->
+<!--        </div>-->
+
+<!--        <div class="navbar-nav ml-auto">-->
+<!--            {% if request.session.is_login %}-->
+<!--            {% if request.session.is_volunteer %}-->
+<!--            <a class="nav-item nav-link" href="#" class="nav-item nav-link">-->
+<!--                当前在线：【志愿者】{{ request.session.username }}</a>-->
+<!--            {% else %}-->
+<!--            <a class="nav-item nav-link" href="#" class="nav-item nav-link">-->
+<!--                当前在线：【管理员】{{ request.session.username }}</a>-->
+<!--            {% endif %}-->
+<!--            <a class="nav-item nav-link" href="/account/logout/" class="nav-item nav-link">登出</a>-->
+<!--            {% else %}-->
+<!--&lt;!&ndash;            <a class="nav-item nav-link" href="/volunteer/login/" class="nav-item nav-link">志愿者登录</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="nav-item nav-link" href="/volunteer/register/" class="btn btn-simple">志愿者注册</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="nav-item nav-link" href="/application/login/" class="nav-item nav-link">活动管理员登录</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="nav-item nav-link" href="/application/register/" class="btn btn-simple">活动管理员注册</a>&ndash;&gt;-->
+<!--            {% endif %}-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="messages">-->
+<!--    {% if messages %}-->
+<!--    {% for message in messages %}-->
+<!--    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">-->
+<!--        {{ message }}-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--    {% endif %}-->
+<!--</div>-->
+<!--<div class="container mycontent">-->
+
+<!--</div>-->
+
+<!--<canvas id="canvas"></canvas>-->
+
+
+<!--&lt;!&ndash; Latest compiled and minified jQuery &ndash;&gt;-->
+<!--&lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"-->
+<!--        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"-->
+<!--        crossorigin="anonymous"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>base</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/starter-template/">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="{% static 'css/start-template.css' %}">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      body{
+        background-image: url("{% static 'images/bg2.jpg' %}");
+        background-repeat: repeat-y;
+        background-size: cover;
+      }
+    </style>
+
+  </head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  {% if request.session.is_login %}
+  {% if request.session.is_volunteer %}
+  <a class="navbar-brand" href="/showActivity">校园志愿管理平台</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% else %}
+  <a class="navbar-brand" href="/myapp/showActivity">校园志愿管理平台</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% endif %}
+  {% endif %}
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      {% if request.session.is_login %}
+      {% if request.session.is_volunteer %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/myapp/apply">申请活动</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/account/applyResult">查询申请结果</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/account/information">个人信息【志愿者】</a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/postActivity">发布活动</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/myapp/check">审核申请</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/account/information">个人信息【管理员】</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="/account/logout/">退出账号</a>
+      </li>
+      {% endif %}
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+<main role="main" class="container" >
+
+  <div class="container mycontent">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+
+<canvas id="canvas"></canvas>
+
+</main><!-- /.container -->
+
+   <!-- JavaScript files-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script><!--表单验证-->
+
+</body>
+</html>
